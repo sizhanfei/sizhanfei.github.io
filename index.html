@@ -4,12 +4,70 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>司展飞的个人网站</title>
+    <title>Si - Home page of szftime</title>
     <link rel="stylesheet" type="text/css" href="http://www.dangdaitv.com/assets/css/main.css"/>
 </head>
 
 <body>
-<h1>司展飞的个人网站</h>
-<a href="http://www.miitbeian.gov.cn"><p align="center">备案号：豫ICP备14027657号</p></a>
+<div class="vi">
+    <div class="sidebar">
+        <div class="header">
+            <h1>Si</h1>
+            <div class="quote">
+                <p class="quote-text animate-init">不积跬步，无以至千里。不积小流，无以成江海。</p>
+                <p class="quote-author animate-init">《劝学篇》—— <strong>荀子</strong></p>
+            </div>
+        </div>
+        <div class="menu">
+            <a href="#" class="animate-init">GitHub</a>
+            <a href="http://notes.sizhanfei.com" class="animate-init">Notes</a>
+            <a href="#" class="animate-init">DouBan</a>
+            <a href="http://weibo.com/5611737518" class="animate-init">WeiBo</a>
+        </div>
+        <div class="location">
+            <i class="location-icon"></i>
+            <span class="location-text animate-init">ZhengZhou - China</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <span class="close">close</span>
+    </div>
+</div>
+<script type="text/javascript" src="http://www.dangdaitv.com/assets/vendors/jquery/index.js"></script>
+<script>
+    $(document).ready(function () {
+        var delay = 1;
+        var DELAY_STEP = 200;
+        var animationOptions = { opacity: 1, top: 0};
+
+        $('h1').animate(animationOptions).promise()
+                .pipe(animateMain)
+                .pipe(animateLocationIcon);
+
+        function animateMain() {
+            var dfd = $.Deferred();
+            var els = $('.animate-init');
+            var size = els.size();
+
+            els.each(function (index, el) {
+                delay++;
+                $(el).delay(index * DELAY_STEP)
+                        .animate(animationOptions);
+                (size - 1 === index) && dfd.resolve();
+            });
+            return dfd.promise();
+        }
+
+        function animateLocationIcon() {
+            $('.location-icon').delay(delay * DELAY_STEP).animate({
+                opacity: 1,
+                top: 0
+            }).promise().done(animationQuote);
+        }
+
+        function animationQuote() {}
+    });
+</script>
 </body>
 </html>
