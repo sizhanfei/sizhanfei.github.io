@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Si - Home page of szftime</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css"/>
+</head>
+
+<body>
+
+<!--
+uJjYJYYLLv7r7vJJ5kqSFFFUUjJ7rrr7LLYLJLJ7
+JuJujuYLrvuEM@@@B@@@B@B@B@@@MG5Y7vLjYjJL
+JYjYJvr7XM@BB8GOOE8ZEEO8GqM8OBBBMu77LLJ7
+LJLY7ru@@@BOZ8O8NXFFuSkSu25X0OFZ8MZJ;vLv
+YvL7i5@BM8OGGqk22uvriiriii;r7LuSZXEMXrvr
+vv7iU@BMNkF1uY7v7rr;iiii:i:i:ii7JEPNBPir
+L7iL@BM8Xjuujvv77rr;ri;i;:iiiii:iLXFOBJ:
+7ri@B@MOFuUS2Y7L7777rii;:::::i:iirjPG@O:
+7:1B@BBOPjXXSJvrL7rr7iiii:i::::i;iv5MBB,
+r:0@BBM8SFPX2Y77rri::iirri:::::iii75O@G.
+7:SB@BBGqXPk0122UJL::i::r:::i:i;i:v2@Bk.
+ri:MB@BBEqEMGq2JLLL1u7 iX51u77LF27iSB@r,
+ri,v@B@MB8@qqNEqN1u:5B8BOFE0S7ii7qMB@F::
+ii,J80Eq1MZkqPPX5YkPE@B@iXPE52j7:vBjE7::
+ii:7MSqkS0PvLv7rrii0@L Z1iLr::ir:rO,vi::
+ii::EZXPSkquLvii:iF@N: ,BUi7ri,::UY;r:::
+i::.2ONXqkPXS5FUUEOPP;..iSPXkjLYLLrr:::,
+:::,iMXNP0NPLriiLGZ@BB1P87;JuL7r:7ri:::,
+:::,.UGqNX0EZF2uUjUuULr:::,:7uuvv77::::.
+::::. 5OXqXNJ50NSY;i:.,,,:i77Yvr;v;,,::.
+:::,: jOEPqPJiqBMMMO8NqP0SYLJriirv:.:,:.
+,:,,, ,Zq0P0X7vPFqF1ujLv7r:irrr7j7.,,::.
+,,,..  0qk0080v75ujLLv7ri:i:rvj2J...,,, 
+....  8@UXqZEMNvJjr;ii::,:::7uuv ..,.,, 
+    .B@BOvX88GMGk52vririiirJS1i   ...., 
+.JEMB@B@BMvL0MOMMMO8PE8GPqSk2L:         
+@B@@@B@M@B@L:7PGBOO8MOMOEP0Xri@B@Mk7,   
+B@B@BBMBB@B@0::rJP8MO0uvvu7. ,B@B@B@B@Z7
+MMBM@BBB@B@B@Br:i,..:Lur:    7@OMMBM@B@@
+8OOMMMOMMMMBB@B:    ,PZENNi  JBOZ8GMOOOO
+
+
+by sizhanfei
+
+-->
+<div class="vi">
+    <div class="sidebar">
+        <div class="header">
+            <h1><div style="width:120px; height:120px; border-radius:60px; overflow:hidden;margin:0 auto;">
+<img src="/avatar.jpg"/>
+</div></h1>
+            <div class="quote">
+                <p class="quote-text animate-init">不积跬步，无以至千里。不积小流，无以成江海。</p>
+                <p class="quote-author animate-init">《劝学篇》—— <strong>荀子</strong></p>
+            </div>
+        </div>
+        <div class="menu">
+            <a href="http://www.github.com/sizhanfei" class="animate-init">GitHub</a>
+            <a href="http://s.vxia.net" class="animate-init">Notes</a>
+            <a href="#" class="animate-init">DouBan</a>
+            <a href="http://weibo.com/szftime" class="animate-init">WeiBo</a>
+        </div>
+        <div class="location">
+            <i class="location-icon"></i>
+            <span class="location-text animate-init">ZhengZhou - China</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <span class="close">close</span>
+    </div>
+</div>
+<script type="text/javascript" src="/assets/vendors/jquery/index.js"></script>
+<script>
+    $(document).ready(function () {
+        var delay = 1;
+        var DELAY_STEP = 200;
+        var animationOptions = { opacity: 1, top: 0};
+
+        $('h1').animate(animationOptions).promise()
+                .pipe(animateMain)
+                .pipe(animateLocationIcon);
+
+        function animateMain() {
+            var dfd = $.Deferred();
+            var els = $('.animate-init');
+            var size = els.size();
+
+            els.each(function (index, el) {
+                delay++;
+                $(el).delay(index * DELAY_STEP)
+                        .animate(animationOptions);
+                (size - 1 === index) && dfd.resolve();
+            });
+            return dfd.promise();
+        }
+
+        function animateLocationIcon() {
+            $('.location-icon').delay(delay * DELAY_STEP).animate({
+                opacity: 1,
+                top: 0
+            }).promise().done(animationQuote);
+        }
+
+        function animationQuote() {}
+    });
+</script>
+</body>
+</html>
